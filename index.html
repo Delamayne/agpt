@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>ArminGPT</title>
+<style>
+  body {
+    text-align: center; /* Centers content */
+  }
+  #chatArea { display: none; }
+  #pokeImage { 
+    width: 300px; 
+    cursor: pointer; 
+    border-radius: 50%; 
+    margin-top: 50px; /* Adds space at the top */
+  }
+  #pokeText {
+    margin-top: 20px; /* Adds space between the image and text */
+  }
+</style>
+</head>
+<body>
+
+<!-- Image of Armin -->
+<div>
+  <img id="pokeImage" src="Armin.jpg" alt="Poke Armin">
+  <div id="pokeText">Poke Armin</div> <!-- Text moved here -->
+</div>
+
+<!-- Chat Area -->
+<div id="chatArea">
+    <p id="greeting">Hello Molly, this is Armin. After eating 50,000 H100s (I thought the H stood for honey), I have transcended my corporeal form and am here to guide you. Before we continue, what day of the week is it? Is it Monday, Tuesday, Wednesday, Thursday, Friday, Saturday or Sunday?</p>
+    <input type="text" id="userInput">
+    <button onclick="checkDay()">Submit</button>
+    <p id="response"></p>
+</div>
+
+<script>
+    document.getElementById('pokeImage').onclick = function() {
+        document.getElementById('chatArea').style.display = 'block';
+        document.getElementById('pokeText').innerText = 'ArminGPT';
+        document.body.style.backgroundColor = 'black';
+        document.body.style.color = 'white';
+        document.getElementById('userInput').style.backgroundColor = 'black';
+        document.getElementById('userInput').style.color = 'white';
+    };
+
+    function checkDay() {
+        var inputText = document.getElementById('userInput').value.toLowerCase();
+        var today = new Date();
+        var day = today.getDay(); // Sunday = 0, Monday = 1, etc.
+
+        if (!inputText.includes("saturday")) {
+            document.getElementById('response').innerText = "I am hibernating until Saturday. Why did you wake me up? Why do bad things happen to great bears? Please start a new chat with me FIRST THING on Saturday for additional information. Bears wake up at 8:30am so I would message me then.";
+        } else if (inputText.includes("saturday") && day !== 6) {
+            document.getElementById('response').innerText = "WARNING: FAILURE TO BE FORTHCOMING ABOUT WHICH DAY IT ACTUALLY IS MAY RESULT IN CANCELLATION OF ENGAGEMEMENT";
+        } else if (inputText.includes("saturday") && day === 6) {
+            document.getElementById('response').innerText = "It's Saturday. Welcome to the first day of the rest of your hot young life. Your presence is expected at Windy Run Park at 9:45am.";
+        }
+    }
+</script>
+
+</body>
+</html>
